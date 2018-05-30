@@ -22,13 +22,12 @@ Somethin
 * **03.Enrichment_Analyses**
     1. x
     2. y
-**04.Nano_String**
+* **04.Nano_String**
     1. x
     2. y
-
-**05.Cancer_Comparison**
-1. x
-2. y
+* **05.Cancer_Comparison**
+    1. x
+    2. y
 
 1. 450K intensity data processing and estimation of 5hmC/5mC proportions.
 2. Characterization of the genome-wide distribution and abundance of 5hmC, and selection of the *high 5hmC CpGs*.
