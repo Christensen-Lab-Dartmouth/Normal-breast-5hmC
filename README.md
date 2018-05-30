@@ -14,7 +14,7 @@ Owen M. Wilkins, Kevin C. Johnson, E. Andres Houseman, Jessica E. King, Carmen J
 4. Analysis of relation between 5hmC abundance and breast-specific gene expression
 5. Statistical comparison of overlap between *high 5hmC CpGs* and differentially methylated loci in ductal carcinoma in situ (DCIS) and breast tumor tissue
 
-### Data availability
+### Data
 
 * 450K intensity data for bisulfite & oxidative-bisulfite treated data from 18 normal breast tissue samples (NDRI): GEO, accession number GSE73895
 * 450K intensity data from DCIS (*n*=40) & adjacent-normal (*n*=15) tissue samples (NHMN): GEO, accession number  GSE66313
