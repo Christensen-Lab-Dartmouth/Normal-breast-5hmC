@@ -11,12 +11,21 @@ Somethin
 
 ### Analysis overview
 
-* 01.Data_Preprocessing
-    1. Processing of raw 450K intensity data
-    2. Estimation of 5hmC/5mC proportions.
-* 02.Characterization_5hmC_levels
-    1. 
-
+* **01.Data_Preprocessing**
+    1. Processing of raw DNA methylation intensity data (IDATs)
+    2. Estimation of 5hmC/5mC proportions in normal breast tissue
+* **02.Characterization_5hmC_levels**
+    1. x
+    2. y
+* **03.Enrichment_Analyses**
+    1. x
+    2. y
+* **04.Nano_String**
+    1. x
+    2. y
+* **05.Cancer_Comparison**
+    1. x
+    2. y
 
 1. 450K intensity data processing and estimation of 5hmC/5mC proportions.
 2. Characterization of the genome-wide distribution and abundance of 5hmC, and selection of the *high 5hmC CpGs*.
