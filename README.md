@@ -21,7 +21,7 @@ Contributing authors: Owen M. Wilkins, Kevin C. Johnson, E. Andres Houseman, Jes
 * 450K intensity data from breast tumor and adjcaent-normal tissue samples from the TCGA project (https://portal.gdc.cancer.gov/)
 * Breast-specific coordinates of DNase hypersensitivity sites and histone modfications (derived from ChIP-seq experiments): NIH Roadmap Epigenomics Project (https://www.ncbi.nlm.nih.gov/geo/roadmap/epigenomics/)
 
-> # Abbreviations:  <br />
+> **Abbreviations**:  <br />
  <br />
 > NDRI - National Disease Research Interchange <br />
 > NHMN - New Hampshire Mammography Network <br />
