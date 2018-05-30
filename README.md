@@ -7,9 +7,7 @@ May 2018
 
 ## Project description
 
-NDRI
 
-Somethin
 
 ## Analysis overview
 
