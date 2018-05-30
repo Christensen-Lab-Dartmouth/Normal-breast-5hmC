@@ -9,7 +9,7 @@ NDRI
 
 ### Analysis overview
 
-1. 450K intensity data processing and estimation of 5hmC/5mC proportions.\
+1. 450K intensity data processing and estimation of 5hmC/5mC proportions.\\
 2. Characterization of the genome-wide distribution and abundance of 5hmC, and selection of the *high 5hmC CpGs*.\
 3. Tests of 5hmC enrichment among genomic features and gene sets
 \
