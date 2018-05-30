@@ -1,15 +1,15 @@
-## *Genome-wide abundance of 5-hydroxymethylcytosine in breast tissue reveals unique function in dynamic gene regulation and carcinogenesis*
+### *Genome-wide abundance of 5-hydroxymethylcytosine in breast tissue reveals unique function in dynamic gene regulation and carcinogenesis*
 
 Owen M. Wilkins, Kevin C. Johnson, E. Andres Houseman, Jessica E. King, Carmen J. Marsit, Brock C. Christensen <br />
 May 2018
 
-### Project description
+#### Project description
 
 NDRI
 
 Somethin
 
-### Analysis overview
+#### Analysis overview
 
 * **01.Data_Preprocessing**
     1. Processing of raw DNA methylation intensity data (IDATs)
@@ -33,7 +33,7 @@ Somethin
 4. Analysis of relation between 5hmC abundance and breast-specific gene expression
 5. Statistical comparison of overlap between *high 5hmC CpGs* and differentially methylated loci in ductal carcinoma in situ (DCIS) and breast tumor tissue
 
-### Data availability
+#### Data availability
 
 * Normal breast (*n*=18) tissue DNA methylation data (IDATs, 450K, bisulfite & oxidative-bisulfite treated DNA): <br />
     - NDRI, GEO accession number: GSE73895
