@@ -32,7 +32,7 @@ NDRI
     - NIH Roadmap Epigenomics Project (https://www.ncbi.nlm.nih.gov/geo/roadmap/epigenomics/)
 
 > **Abbreviations**:  <br />
-> NDRI - National Disease Research Interchange <br /> \
+> NDRI - National Disease Research Interchange <br /> \\
 > NHMN - New Hampshire Mammography Network <br />
 > TCGA - The Cancer Genome Atlas <br />
 > NCI - National Cancer Institute <br />
