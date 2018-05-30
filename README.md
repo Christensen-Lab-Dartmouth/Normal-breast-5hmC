@@ -17,13 +17,14 @@ NDRI
 
 ### Data availability
 
-* Normal breast tissue DNA methylation data (IDATs, 450K, bisulfite & oxidative-bisulfite treated): <br />
-    - GEO, accession number *GSE73895*
-* DNA methylation data (IDATs, 450K) from DCIS (*n*=40) & adjacent-normal (*n*=15) tissue samples (NHMN): GEO,
-    - GEO, accession number *GSE66313*
-* DNA methylation data (IDATs, 450K) from breast tumor and adjcaent-normal tissue samples from the TCGA project
-    - NCI's Genomic Data Commons (GDC, https://portal.gdc.cancer.gov/)
-* Breast-specific coordinates of DNase hypersensitivity sites and histone modfications (derived from ChIP-seq experiments): NIH Roadmap Epigenomics Project (https://www.ncbi.nlm.nih.gov/geo/roadmap/epigenomics/)
+* Normal breast tissue DNA methylation data (IDATs, 450K, bisulfite & oxidative-bisulfite treated DNA): <br />
+    - NDRI, GEO accession number *GSE73895*
+* DCIS (*n*=40) & adjacent-normal (*n*=15) (IDATs, 450K, bisulfite-treated DNA): GEO,
+    - NHMN, GEO accession number *GSE66313* : <br />
+* Breast tumor and adjacent-normal DNA methylation data: <br />
+    - TCGA project, NCI Genomic Data Commons (https://portal.gdc.cancer.gov/)
+* Breast-specific DNase hypersensitivity site and histone modification coordinates (from ChIP-seq experiments): <br />
+    - NIH Roadmap Epigenomics Project (https://www.ncbi.nlm.nih.gov/geo/roadmap/epigenomics/)
 
 > **Abbreviations**:  <br />
 > NDRI - National Disease Research Interchange <br />
