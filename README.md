@@ -7,9 +7,16 @@ May 2018
 
 NDRI
 
-Somethin 
+Somethin
 
 ### Analysis overview
+
+* 01.Data_Preprocessing
+    1. Processing of raw 450K intensity data
+    2. Estimation of 5hmC/5mC proportions.
+* 02.Characterization_5hmC_levels
+    1. 
+
 
 1. 450K intensity data processing and estimation of 5hmC/5mC proportions.
 2. Characterization of the genome-wide distribution and abundance of 5hmC, and selection of the *high 5hmC CpGs*.
