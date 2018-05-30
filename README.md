@@ -1,6 +1,6 @@
 ## *Genome-wide abundance of 5-hydroxymethylcytosine in breast tissue reveals unique function in dynamic gene regulation and carcinogenesis*
 
-Owen M. Wilkins, Kevin C. Johnson, E. Andres Houseman, Jessica E. King, Carmen J. Marsit, Brock C. Christensen
+Owen M. Wilkins, Kevin C. Johnson, E. Andres Houseman, Jessica E. King, Carmen J. Marsit, Brock C. Christensen/
 May 2018
 
 ### Project description
@@ -26,7 +26,6 @@ NDRI
 * Breast-specific coordinates of DNase hypersensitivity sites and histone modfications (derived from ChIP-seq experiments): NIH Roadmap Epigenomics Project (https://www.ncbi.nlm.nih.gov/geo/roadmap/epigenomics/)
 
 > **Abbreviations**:  <br />
-\
 > NDRI - National Disease Research Interchange <br />
 > NHMN - New Hampshire Mammography Network <br />
 > TCGA - The Cancer Genome Atlas <br />
