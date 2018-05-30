@@ -18,7 +18,7 @@ May 2018
 ### Data availability
 
 * DNA methylation data (IDATs, 450K) for bisulfite & oxidative-bisulfite treated data from 18 normal breast tissue samples (NDRI): <br />
-    <p>GEO, accession number GSE73895
+GEO, accession number GSE73895
 * DNA methylation data (IDATs, 450K) from DCIS (*n*=40) & adjacent-normal (*n*=15) tissue samples (NHMN): GEO, accession number  GSE66313
 * DNA methylation data (IDATs, 450K) from breast tumor and adjcaent-normal tissue samples from the TCGA project (https://portal.gdc.cancer.gov/)
 * Breast-specific coordinates of DNase hypersensitivity sites and histone modfications (derived from ChIP-seq experiments): NIH Roadmap Epigenomics Project (https://www.ncbi.nlm.nih.gov/geo/roadmap/epigenomics/)
