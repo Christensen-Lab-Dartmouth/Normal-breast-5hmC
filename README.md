@@ -22,8 +22,8 @@ Contributing authors: Owen M. Wilkins, Kevin C. Johnson, E. Andres Houseman, Jes
 * Breast-specific coordinates of DNase hypersensitivity sites and histone modfications (derived from ChIP-seq experiments): NIH Roadmap Epigenomics Project (https://www.ncbi.nlm.nih.gov/geo/roadmap/epigenomics/)
 
 Abbreviations:
-NDRI - National Disease Research Interchange
-NHMN - New Hampshire Mammography Network 
-TCGA - The Cancer Genome Atlas 
+- NDRI - National Disease Research Interchange
+- NHMN - New Hampshire Mammography Network 
+- TCGA - The Cancer Genome Atlas 
 
 
