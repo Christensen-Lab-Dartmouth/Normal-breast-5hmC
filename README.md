@@ -22,10 +22,11 @@ Somethin
 * **03.Enrichment_Analyses**
     1. x
     2. y
-* **04.Nano_String**
+**04.Nano_String**
     1. x
     2. y
-* **05.Cancer_Comparison**
+
+**05.Cancer_Comparison**
     1. x
     2. y
 
