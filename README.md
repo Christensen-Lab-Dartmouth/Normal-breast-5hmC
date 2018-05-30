@@ -10,19 +10,26 @@ NDRI
 ### Analysis overview
 
 1. 450K intensity data processing and estimation of 5hmC/5mC proportions.
+\
 2. Characterization of the genome-wide distribution and abundance of 5hmC, and selection of the *high 5hmC CpGs*.
+\
 3. Tests of 5hmC enrichment among genomic features and gene sets
+\
 4. Analysis of relation between 5hmC abundance and breast-specific gene expression
+\
 5. Statistical comparison of overlap between *high 5hmC CpGs* and differentially methylated loci in ductal carcinoma in situ (DCIS) and breast tumor tissue
 
 ### Data availability
 
-* Normal breast tissue DNA methylation data (IDATs, 450K, bisulfite & oxidative-bisulfite treated DNA): <br />
-    - NDRI, GEO accession number *GSE73895*
-* DCIS (*n*=40) & adjacent-normal (*n*=15) (IDATs, 450K, bisulfite-treated DNA): GEO,
-    - NHMN, GEO accession number *GSE66313* : <br />
+* Normal breast (*n*=18) tissue DNA methylation data (IDATs, 450K, bisulfite & oxidative-bisulfite treated DNA): <br />
+    - NDRI, GEO accession number: GSE73895
+    \
+* DCIS (*n*=40) & adjacent-normal (*n*=15) tissue DNA methylation data (IDATs, 450K, bisulfite-treated DNA): GEO,
+    - NHMN, GEO accession number: GSE66313 <br />
+    \
 * Breast tumor and adjacent-normal DNA methylation data: <br />
     - TCGA project, NCI Genomic Data Commons (https://portal.gdc.cancer.gov/)
+    \
 * Breast-specific DNase hypersensitivity site and histone modification coordinates (from ChIP-seq experiments): <br />
     - NIH Roadmap Epigenomics Project (https://www.ncbi.nlm.nih.gov/geo/roadmap/epigenomics/)
 
