@@ -12,10 +12,12 @@ May 2018
 ## Analysis overview
 
 * **01.Data_Preprocessing**
-    1. Processing of raw DNA methylation intensity data (IDATs) \ 
+    1. Processing of raw DNA methylation intensity data (IDATs)
     2. Estimation of 5hmC/5mC proportions in normal breast tissue
+
 * **02.Characterization_5hmC_levels**
     1. Genomic characterization of 5hmC distribution & abundance
+
     2. Selection of *high 5hmC CpGs* (CpG loci among top 1% in 5hmC abundance)
 * **03.Enrichment_Analyses**
     1. Gene set enrichment of *high 5hmC CpGs*
