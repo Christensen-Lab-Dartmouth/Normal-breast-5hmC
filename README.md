@@ -27,12 +27,6 @@ May 2018
     1. Tests of *high 5hmC CpG* enrichment among differentially methylated CpGs between DCIS * adjacent-normal
     2. Tests of *high 5hmC CpG* enrichment among differentially methylated CpGs between tumor * adjacent-normal
 
-1. 450K intensity data processing & estimation of 5hmC/5mC proportions.
-2. Characterization of the genome-wide distribution & abundance of 5hmC, & selection of the *high 5hmC CpGs*.
-3. Tests of 5hmC enrichment among genomic features & gene sets
-4. Analysis of relation between 5hmC abundance & breast-specific gene expression
-5. Statistical comparison of overlap between *high 5hmC CpGs* & differentially methylated loci in ductal carcinoma in situ (DCIS) & breast tumor tissue
-
 ## Data availability
 
 * Normal breast (*n*=18) tissue DNA methylation data (IDATs, 450K, bisulfite & oxidative-bisulfite treated DNA): <br />
