@@ -7,7 +7,11 @@ May 2018
 
 ## Project description
 
+Recent studies have demonstrated 5hmC to be a stable epigenetic mark that contributes to a range of cellular processes, ranging from embryonic development to somatic cell reprogramming. However, genome-scale maps of 5hmC in human tissues are lacking. We utilized a paired bisulfite & oxidative-bisulfite DNA treatment approach followed by DNA methylation profiling (450K array) to study the distribution and abundance of 5hmC in normal breast tissue.
 
+Our work reveals a striking enrichment of 5hmC among breast-specific DNA regulatory elements positively associated with transcriptional activity, while being simultaneously depleted among regulatory regions involved in transcriptional repression. In addition, we demonstrate that 5hmC is positively correlated with gene expression in normal breast tissue. Finally, we find 5hmC in enriched among CpG loci differentially methylated between premalignant/malignant breast tissue and adjacent-normal, suggested 5hmC may contribute to carcinogenesis.
+
+This repository contains all code used to process and generate our results. An overview of the analytical steps and data availability are provided below. This work is currently under submission for publication and this repository will be updated when the associated manuscript is published. 
 
 ## Analysis overview
 
