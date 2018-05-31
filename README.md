@@ -35,13 +35,10 @@ May 2018
 
 * Normal breast (*n*=18) tissue DNA methylation data (IDATs, 450K, bisulfite & oxidative-bisulfite treated DNA):
     - NDRI, GEO accession number: GSE73895
-
 * DCIS (*n*=40) & adjacent-normal (*n*=15) tissue DNA methylation data (IDATs, 450K, bisulfite-treated DNA): GEO,
     - NHMN, GEO accession number: GSE66313
-
 * Breast tumor & adjacent-normal DNA methylation data:
     - TCGA project, NCI Genomic Data Commons (https://portal.gdc.cancer.gov/)
-    
 * Breast-specific DNase hypersensitivity site & histone modification coordinates (from ChIP-seq experiments):
     - NIH Roadmap Epigenomics Project (https://www.ncbi.nlm.nih.gov/geo/roadmap/epigenomics/)
 

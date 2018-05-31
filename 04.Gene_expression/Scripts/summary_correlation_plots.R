@@ -6,8 +6,8 @@ setwd("/Users/Owen 1/Dropbox (Christensen Lab)/NDRI_Breast_5hmC_update/")
 library(ggplot2)
 
 # read in data 
-hmC <- read.csv("04.Nano_String/Files/high_5hmC_CpG_expression_correlations_5hmC.csv", stringsAsFactors = F)
-mC <- read.csv("04.Nano_String/Files/high_5mC_CpG_expression_correlations_5mC.csv", stringsAsFactors = F)
+hmC <- read.csv("04.Gene_expression/Files/high_5hmC_CpG_expression_correlations_5hmC.csv", stringsAsFactors = F)
+mC <- read.csv("04.Gene_expression/Files/high_5mC_CpG_expression_correlations_5mC.csv", stringsAsFactors = F)
 str(hmC)
 str(mC)
 
@@ -23,7 +23,7 @@ head(hmC)
 
 # plot correlations between high 5hmC CpGs and gene expression 
 dpi = 300
-png("04.Nano_String/Figures/high_5hmC_CpG_expression_correlations_5hmC_0_001.png", width = dpi*10, height = dpi*10, res = dpi)
+png("04.Gene_expression/Figures/high_5hmC_CpG_expression_correlations_5hmC_0_001.png", width = dpi*10, height = dpi*10, res = dpi)
 plot_5hmc <- ggplot(hmC, aes(x = Transcript_Variant, y = Spearman_Cor, size = -log10(Spearman_Pval), fill = Transcript_Variant)) +  
   geom_point(alpha = 0.5, shape = 21) + 
   expand_limits(y=c(-0.8,0.8)) + 
@@ -49,7 +49,7 @@ plot_5hmc
 dev.off()
 
 # same for 5mC at same CpGs 
-png("04.Nano_String/Figures/high_5hmC_CpG_expression_correlations_5mC.png", width = dpi*10, height = dpi*10, res = dpi)
+png("04.Gene_expression/Figures/high_5hmC_CpG_expression_correlations_5mC.png", width = dpi*10, height = dpi*10, res = dpi)
 plot_5mc <- ggplot(mC, aes(x = Transcript_Variant, y = Spearman_Cor, size = -log10(Spearman_Pval), fill = Transcript_Variant))+ 
   geom_point(alpha = 0.5, shape = 21) + 
   expand_limits(y=c(-0.8,0.8)) + 
