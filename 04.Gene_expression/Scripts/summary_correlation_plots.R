@@ -11,19 +11,19 @@ mC <- read.csv("04.Gene_expression/Files/high_5mC_CpG_expression_correlations_5m
 str(hmC)
 str(mC)
 
-# drop the median calculated expression entries for RASSF1 and DNMT3A to leave the values for each transcript 
+# drop the median calculated expression entries for RASSF1 and DNMT3A to leave the values for each transcript, 
 hmC <- hmC[-which(hmC$Transcript_Variant=="RASSF1" | hmC$Transcript_Variant=="DNMT3A"),]
 mC <- mC[-which(mC$Transcript_Variant=="RASSF1" | mC$Transcript_Variant=="DNMT3A"),]
 head(hmC)
 # convert transcripts variable to factors so you can specify order they appear in plot 
-hmC$Transcript_Variant <- factor(hmC$Transcript_Variant, levels = c("RAB32", "TWIST1", "RASSF1_vB", "RASSF1_vC", "RASSF1_vH", "DNMT3A_v2", "DNMT3A_v3", "DNMT3A_v4"))
+hmC$Transcript_Variant <- factor(hmC$Transcript_Variant, levels = c("RAB32", "TWIST1", "RASSF1_vB", "RASSF1_vC", "RASSF1_vH", "DNMT3A_v3", "DNMT3A_v4"))
 head(hmC)
-mC$Transcript_Variant <- factor(mC$Transcript_Variant, levels = c("RAB32", "TWIST1", "RASSF1_vB", "RASSF1_vC", "RASSF1_vH", "DNMT3A_v2", "DNMT3A_v3", "DNMT3A_v4"))
+mC$Transcript_Variant <- factor(mC$Transcript_Variant, levels = c("RAB32", "TWIST1", "RASSF1_vB", "RASSF1_vC", "RASSF1_vH", "DNMT3A_v3", "DNMT3A_v4"))
 head(hmC)
 
 # plot correlations between high 5hmC CpGs and gene expression 
 dpi = 300
-png("04.Gene_expression/Figures/high_5hmC_CpG_expression_correlations_5hmC_0_001.png", width = dpi*10, height = dpi*10, res = dpi)
+png("04.Gene_expression/Figures/high_5hmC_CpG_expression_correlations_5hmC.png", width = dpi*10, height = dpi*10, res = dpi)
 plot_5hmc <- ggplot(hmC, aes(x = Transcript_Variant, y = Spearman_Cor, size = -log10(Spearman_Pval), fill = Transcript_Variant)) +  
   geom_point(alpha = 0.5, shape = 21) + 
   expand_limits(y=c(-0.8,0.8)) + 

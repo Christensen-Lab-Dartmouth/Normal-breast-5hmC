@@ -22,6 +22,7 @@ NDRI_Covars <- read.csv("01.Data_Preprocessing/Files/NDRI_Normal_Samples.csv", h
 Covars_ordered <- NDRI_Covars[order(rownames(NDRI_Covars)), ]
 Breast_Nanostring_Norm <- Breast_Nanostring_Norm[, c(1, order(colnames(Breast_Nanostring_Norm)))]
 all(rownames(Covars_ordered)==colnames(Breast_Nanostring_Norm)[2:19])
+Breast_Nanostring_Norm <- Breast_Nanostring_Norm[,1:19]
 
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 # Selection for CpGs of Interest
@@ -146,8 +147,11 @@ CpGgenes$UCSC_RefGene_Name = as.character(CpGgenes$UCSC_RefGene_Name)
 
 # calculate median expression over multiple transcripts for DNMT3A + RASSF1 
 # DNMT3A
-Breast_Nanostring_Norm[dim(Breast_Nanostring_Norm)[1]+1,] <- apply(Breast_Nanostring_Norm[c("DNMT3A_v2","DNMT3A_v3","DNMT3A_v4"),], 2, median)
+Breast_Nanostring_Norm[dim(Breast_Nanostring_Norm)[1]+1,] <- c("DNMT3A", apply(Breast_Nanostring_Norm[c("DNMT3A_v3","DNMT3A_v4"),2:19], 2, median))
+#Breast_Nanostring_Norm[dim(Breast_Nanostring_Norm)[1], 2:19] <- as.numeric(Breast_Nanostring_Norm[dim(Breast_Nanostring_Norm)[1], 2:19])
 rownames(Breast_Nanostring_Norm)[dim(Breast_Nanostring_Norm)[1]] <- "DNMT3A"
+# NOTE: DNMT3A_v2 not used here as none of the high 5hmC CGs overlap with this transcript 
+
 # RASSF1
 Breast_Nanostring_Norm[dim(Breast_Nanostring_Norm)[1]+1,] <- apply(Breast_Nanostring_Norm[c("RASSF1_vB","RASSF1_vC","RASSF1_vH"),], 2, median)
 rownames(Breast_Nanostring_Norm)[dim(Breast_Nanostring_Norm)[1]] <- "RASSF1"
@@ -235,7 +239,7 @@ colnames(mc) <- c("Illumina_ID", "Transcript_Variant", "UCSC_Gene_Name",	"CHR",	
 
 # index hmc for those with high (>0.1 beta) 5hmC
 top1_perc <- readRDS("02.Characterization_5hmC_levels/Files/high_5hmc_top1%_5hmC.rds")
-hmc_sub <- hmc[hmc$Illumina_ID %in% top1_perc$id,]
+hmc_sub <- hmc[hmc$Illumina_ID %in% top1_perc$ID,]
 hmc_sub2 <- hmc_sub[hmc_sub$Spearman_Pval < 0.05,]
 
 # restrict to only breast specific genes and epigenetic enzymes 
@@ -246,13 +250,12 @@ hmc_sub_2 <- hmc_sub[hmc_sub$Transcript_Variant=="RAB32" |
                        hmc_sub$Transcript_Variant=="RASSF1_vC" |
                        hmc_sub$Transcript_Variant=="RASSF1_vH" |
                        hmc_sub$Transcript_Variant=="TWIST1" | 
-                       hmc_sub$Transcript_Variant=="DNMT3A" | 
-                       hmc_sub$Transcript_Variant=="DNMT3A_v2" | 
+                       hmc_sub$Transcript_Variant=="DNMT3A" |  
                        hmc_sub$Transcript_Variant=="DNMT3A_v3" | 
                        hmc_sub$Transcript_Variant=="DNMT3A_v4",]
 
 # index 5mc cpgs for those that have high 5hmC
-mc_sub <- mc[mc$Illumina_ID %in% top1_perc$id,]
+mc_sub <- mc[mc$Illumina_ID %in% top1_perc$ID,]
 mc_sub_2 <- mc_sub[mc_sub$Transcript_Variant=="RAB32" |
                      mc_sub$Transcript_Variant=="RASSF1" |
                      mc_sub$Transcript_Variant=="RASSF1_vB" |
@@ -260,7 +263,6 @@ mc_sub_2 <- mc_sub[mc_sub$Transcript_Variant=="RAB32" |
                      mc_sub$Transcript_Variant=="RASSF1_vH" |
                      mc_sub$Transcript_Variant=="TWIST1" | 
                      mc_sub$Transcript_Variant=="DNMT3A" | 
-                     mc_sub$Transcript_Variant=="DNMT3A_v2" | 
                      mc_sub$Transcript_Variant=="DNMT3A_v3" |
                      mc_sub$Transcript_Variant=="DNMT3A_v4",]
 
@@ -304,7 +306,7 @@ ppi = 300
 genes <- c(rep("RAB32", 6), 
            rep(c("RASSF1", "RASSF1_vB", "RASSF1_vC", "RASSF1_vH"), 2),
            rep("TWIST1", 4),
-           rep(c("DNMT3A", "DNMT3A_v2", "DNMT3A_v3", "DNMT3A_v4"), 6))
+           rep(c("DNMT3A", "DNMT3A_v3", "DNMT3A_v4"), 6))
 CpGs <- c("cg02664328", "cg01892997", "cg24744430", "cg18987220", "cg23267550", "cg01915609", 
           "cg19854901", "cg19854901", "cg19854901", "cg19854901", "cg24049629", "cg24049629", "cg24049629", "cg24049629", 
           "cg26279021", "cg14391419", "cg10126205", "cg27334919", 
