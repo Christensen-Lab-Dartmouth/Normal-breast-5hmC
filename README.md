@@ -5,6 +5,8 @@
 Owen M. Wilkins, Kevin C. Johnson, E. Andres Houseman, Jessica E. King, Carmen J. Marsit, Brock C. Christensen <br />
 May 2018
 
+BioRxiv manuscript: https://www.biorxiv.org/content/early/2018/06/07/339069
+
 ## Project description
 
 Recent studies have demonstrated 5hmC to be a stable epigenetic mark that contributes to a range of cellular processes, ranging from embryonic development to somatic cell reprogramming. However, genome-scale maps of 5hmC in human tissues are lacking. We utilized a paired bisulfite & oxidative-bisulfite DNA treatment approach followed by DNA methylation profiling (450K array) to study the distribution and abundance of 5hmC in normal breast tissue.
