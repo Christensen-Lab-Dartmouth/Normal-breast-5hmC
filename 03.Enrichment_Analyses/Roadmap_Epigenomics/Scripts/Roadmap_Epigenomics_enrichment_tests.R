@@ -57,6 +57,9 @@ table(AnnotSel$top_5hmC, AnnotSel$probe_type)
 test_enrichment <- function(mark_object, mark_name){
   # index for sites w/ -log10P > 2 as roadmap advise this provides good signal/noice separation 
   mark_bs <- mark_object[score(mark_object)>=2, ]
+  # drop XY & MT coords 
+  non_auto_coords <- which(seqnames(mark_bs)=="chrY" | seqnames(mark_bs)=="chrX" | seqnames(mark_bs)=="chrM")  
+  mark_bs <- mark_bs[-non_auto_coords,]
   # find the overlapping regions between the high confidence peaks and the CpGs on the 450k array 
   overlaps <- findOverlaps(mark_bs, Illumina_gr)
   # get the indicies of the overlapping sites in the 450K annotation file 

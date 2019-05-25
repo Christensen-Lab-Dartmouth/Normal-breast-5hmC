@@ -1,6 +1,8 @@
 #######################################################################################################################
 # Analyze correlations between 5hmC/5mC abundance and gene expression in normal breast tissue 
 # (using available gene expression data collected on NanoString nCounter panel)
+
+# Contributors: Owen Wilkins, Kevin Johnson
 #######################################################################################################################
 rm(list = ls())
 setwd("/Users/Owen 1/Dropbox (Christensen Lab)/NDRI_Breast_5hmC_update/")
@@ -10,7 +12,7 @@ setwd("/Users/Owen 1/Dropbox (Christensen Lab)/NDRI_Breast_5hmC_update/")
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 # gene expression data 
-Breast_Nanostring_Norm = read.csv("04.Gene_expression/Files/NormalBreastTissue_NormalizedData.csv", header=T, row.names=1)
+Breast_Nanostring_Norm = read.csv("04.Nano_String/Files/NormalBreastTissue_NormalizedData.csv", header=T, row.names=1)
 cols = c(2:19)    
 # convert columns to numeric
 Breast_Nanostring_Norm[ , cols] = apply(Breast_Nanostring_Norm[ ,cols], 2, function(x) as.numeric(x))
@@ -109,7 +111,7 @@ cor.test(Avg_5hmC, as.numeric(Breast_Nanostring_Norm["IDH2", 2:19]))
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 # Load annotation file that contains MAPINFO for CpG coordinates
-load("04.Gene_expression/Files/annot.RData")
+load("04.Nano_String/Files/annot.RData")
 
 # Subset the annotation file to the CpGs used in Johnson et al
 annot_full <- annot[rownames(MethOxy[sel, , 3]), ]
@@ -159,18 +161,18 @@ rownames(Breast_Nanostring_Norm)[dim(Breast_Nanostring_Norm)[1]] <- "RASSF1"
 # index 5hmC data for CpGs mapping to genes with expression data 
 All_5hmC = t(MethOxy[CpGs_of_interest, , 3])
 All_5hmC_nano = All_5hmC[colnames(Breast_Nanostring_Norm)[2:19], ]
-write.csv(All_5hmC_nano, file="04.Gene_expression/Files/Normal_Breast_5hmC_CpGs_at_Nanostring_genes.csv")
+write.csv(All_5hmC_nano, file="04.Nano_String/Files/Normal_Breast_5hmC_CpGs_at_Nanostring_genes.csv")
 # do the same for 5mC
 All_5mC = t(MethOxy[CpGs_of_interest, , 2])
 All_5mC_nano = All_5mC[colnames(Breast_Nanostring_Norm)[2:19], ]
-write.csv(All_5mC_nano, file="04.Gene_expression/Files/Normal_Breast_5mC_CpGs_at_Nanostring_genes.csv")
+write.csv(All_5mC_nano, file="04.Nano_String/Files/Normal_Breast_5mC_CpGs_at_Nanostring_genes.csv")
 
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 # test correlations between CpG specific 5hmC/5mC and gene expression 
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 # Listing the output file where R will dump the results
-myoutf1 = "04.Gene_expression/Files/corr_5hmC_nano_normalized_AllCpGs_breast.txt"
+myoutf1 = "04.Nano_String/Files/corr_5hmC_nano_normalized_AllCpGs_breast.txt"
 
 conOut = file(myoutf1, "w")
 for(h in 1:nrow(cpg)){
@@ -203,7 +205,7 @@ All_5mC_nano = All_5mC[colnames(Breast_Nanostring_Norm)[2:19], ]
 cpg = (t(All_5mC_nano))
 
 # Listing the output file where R will dump the results
-myoutf1 = "04.Gene_expression/Files/corr_5mC_nano_normalized_AllCpGs_breast.txt"
+myoutf1 = "04.Nano_String/Files/corr_5mC_nano_normalized_AllCpGs_breast.txt"
 
 #
 conOut = file(myoutf1, "w")
@@ -232,8 +234,8 @@ close(conOut)
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 # restrict to high 5hmC CpGs and breast specific genes 
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-hmc <- read.table("04.Gene_expression/Files/corr_5hmC_nano_normalized_AllCpGs_breast.txt", sep = "\t", header = F, quote="", stringsAsFactors = FALSE)
-mc <- read.table("04.Gene_expression/Files/corr_5mC_nano_normalized_AllCpGs_breast.txt", sep = "\t", header = F, quote="", stringsAsFactors = FALSE)
+hmc <- read.table("04.Nano_String/Files/corr_5hmC_nano_normalized_AllCpGs_breast.txt", sep = "\t", header = F, quote="", stringsAsFactors = FALSE)
+mc <- read.table("04.Nano_String/Files/corr_5mC_nano_normalized_AllCpGs_breast.txt", sep = "\t", header = F, quote="", stringsAsFactors = FALSE)
 colnames(hmc) <- c("Illumina_ID", "Transcript_Variant",	"UCSC_Gene_Name",	"CHR",	"MAPINFO", "UCSC_Gene_Group",	"Median_5hmC",	"Spearman_Cor",	"Spearman_Pval")
 colnames(mc) <- c("Illumina_ID", "Transcript_Variant", "UCSC_Gene_Name",	"CHR",	"MAPINFO", "UCSC_Gene_Group",	"Median_5hm",	"Spearman_Cor",	"Spearman_Pval")
 
@@ -267,8 +269,8 @@ mc_sub_2 <- mc_sub[mc_sub$Transcript_Variant=="RAB32" |
                      mc_sub$Transcript_Variant=="DNMT3A_v4",]
 
 # out put these as lists 
-write.csv(hmc_sub_2, file = "04.Gene_expression/Files/high_5hmC_CpG_expression_correlations_5hmC.csv")
-write.csv(mc_sub_2, file = "04.Gene_expression/Files/high_5mC_CpG_expression_correlations_5mC.csv")
+write.csv(hmc_sub_2, file = "04.Nano_String/Files/high_5hmC_CpG_expression_correlations_5hmC.csv")
+write.csv(mc_sub_2, file = "04.Nano_String/Files/high_5mC_CpG_expression_correlations_5mC.csv")
 
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 # make expression vs methylation plots for all high 5hmC CpGs located in genes with expression data 
@@ -322,7 +324,7 @@ CpGs[19]
 for(i in 1:length(genes)){
   p1 <- exp_vs_meth_plot(genes[i], CpGs[i], All_5hmC_nano, "5hmC")
   p2 <- exp_vs_meth_plot(genes[i], CpGs[i], All_5mC_nano, "5mC")
-  png(paste0("04.Gene_expression/Figures/", genes[i], " vs ", CpGs[i], ".png"), width=7*ppi, height=3*ppi, res=ppi)
+  png(paste0("04.Nano_String/Figures/", genes[i], " vs ", CpGs[i], ".png"), width=7*ppi, height=3*ppi, res=ppi)
   #print(ggarrange(p1, p2, labels = c("A", "B"), ncol = 2, nrow = 1))
   print(ggarrange(p1, p2, ncol = 2, nrow = 1))
   dev.off()

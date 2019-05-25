@@ -106,6 +106,16 @@ res <- lapply(transc_features, test_enrichment)
 names(res) <- c("promoters", "exon", "intron", "intergenic")
 res
 
+table(annot$top_5hmC, annot[,"exon"])
+fisher.test(table(annot$top_5hmC, annot[,"exon"]))
+
+table(factor(annot$top_5hmC, levels = c("1", "0")), factor(annot[,"exon"], levels = c("1", "0")))
+fisher.test(table(factor(annot$top_5hmC, levels = c("1", "0")), factor(annot[,"exon"], levels = c("1", "0"))))
+
+
+table(annot$top_5hmC, annot[,"intergenic"], annot$CpG_Regions)
+mantelhaen.test(table(annot$top_5hmC, annot[,"intergenic"], annot$CpG_Regions), exact=TRUE)
+
 # generate and output results table of 5hmC enrichment with each genomic feature 
 tab <- matrix(NA, ncol = 5, nrow = 4)
 colnames(tab) <- c("P-value", "Odds ratio (95% CI)", "OR", "LB", "UB")
@@ -120,4 +130,55 @@ for(i in 1:length(results)){
   tab[i,4] <- results[[i]]$conf.int[1]
   tab[i,5] <- results[[i]]$conf.int[2]
 }
-write.csv(tab, file = "04.Enrichment_Analyses/Genomic_context/FIles/transcription_feature_hg19_enrichment.csv")
+write.csv(tab, file = "03.Enrichment_Analyses/Genomic_context/FIles/transcription_feature_hg19_enrichment.csv")
+
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+# Test enrichment at CpG Island context 
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+# create one-hot encoding variables for CpGI context
+### island
+annot$Island <- 0
+annot$Island[annot$CpG_Regions=="Island"] <- 1
+### shore
+annot$Shore <- 0
+annot$Shore[annot$CpG_Regions=="Shore"] <- 1
+### shelf
+annot$Shelf <- 0
+annot$Shelf[annot$CpG_Regions=="Shelf"] <- 1
+### sea
+annot$OpenSea <- 0
+annot$OpenSea[annot$CpG_Regions=="OpenSea"] <- 1
+
+
+# test enrichmentr of high 5hmC CpGs among these genomic features against 450K background set 
+cgi_features <- c("Island", "Shore", "Shelf", "OpenSea")
+test_enrichment_2 <- function(feature){
+  cont_tab <- table(annot$top_5hmC, annot[,paste0(feature)])
+  fisher.test(cont_tab)
+}
+res <- lapply(cgi_features, test_enrichment_2)
+names(res) <- c("Island", "Shore", "Shelf", "OpenSea")
+res
+
+
+# generate and output results table of 5hmC enrichment with each genomic feature 
+tab <- matrix(NA, ncol = 5, nrow = 4)
+colnames(tab) <- c("P-value", "Odds ratio (95% CI)", "OR", "LB", "UB")
+rownames(tab) <- c("Island", "Shore", "Shelf", "OpenSea")
+results <- list(res$Island, res$Shore, res$Shelf, res$OpenSea)
+for(i in 1:length(results)){
+  tab[i,1] <- paste0(results[[i]]$p.value)
+  tab[i,2] <- paste0(format(round(results[[i]]$estimate, digits = 2), nsmall = 2), " (", 
+                     format(round(results[[i]]$conf.int[1], digits = 2), nsmall = 2), "-", 
+                     format(round(results[[i]]$conf.int[2], digits = 2), nsmall = 2), ")")
+  tab[i,3] <- results[[i]]$estimate
+  tab[i,4] <- results[[i]]$conf.int[1]
+  tab[i,5] <- results[[i]]$conf.int[2]
+}
+write.csv(tab, file = "03.Enrichment_Analyses/Genomic_context/FIles/CpGI_feature_hg19_enrichment.csv")
+
+# test 5hmC enrichment among CGs located at promoter associated CpG islands 
+annot$promoter_Island <- 0
+annot$promoter_Island[annot$promoters==1 & annot$CpG_Regions=="Island"] <- 1
+fisher.test(annot$top_5hmC, annot[,"promoter_Island"])
