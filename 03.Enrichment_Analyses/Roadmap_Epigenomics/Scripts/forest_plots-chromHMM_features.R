@@ -1,10 +1,13 @@
 #######################################################################################################################
 # Generate forest plots w/ tables of 5hmC enrichment tests against ChIP-seq data from Roadmap Epigenomics project 
+# (for ChromHMM coordinates calculated based on core 15-state ChromHMM model)
 #######################################################################################################################
+
 rm(list = ls())
 library(ggplot2)
 setwd("/Users/Owen 1/Dropbox (Christensen Lab)/NDRI_Breast_5hmC_update/")
 dir2 <- "03.Enrichment_Analyses/Roadmap_Epigenomics/Figures/"
+
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 # load Data 
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -19,6 +22,7 @@ E119_vs_E028_joint <- read.csv("03.Enrichment_Analyses/Roadmap_Epigenomics/Files
 # pre-process data so rows appear in plots in the desired order
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+# function to pre-process data for plotting 
 pre_process_1 <- function(x){
   #### basic genomic features (promoters, introns, etc.)
   # rename columns 
@@ -34,12 +38,14 @@ pre_process_1 <- function(x){
   x
 }
 
+# applyt function to pre-process 
 E027 <- pre_process_1(E027)
 E119 <- pre_process_1(E119)
 E119_vs_E028_lost <- pre_process_1(E119_vs_E028_lost)
 E119_vs_E028_gained <- pre_process_1(E119_vs_E028_gained)
 E119_vs_E028_joint <- pre_process_1(E119_vs_E028_joint)
 
+# function to process features names appropriately 
 process_names <- function(x){
   x$state <- factor(sapply(as.character(x$state), function(x1) strsplit(x1, "_")[[1]][2]), 
                     levels = rev(c("TssA", "TssAFlnk", "TxFlnk", "Tx", "TxWk", "EnhG", "Enh", 
@@ -47,34 +53,19 @@ process_names <- function(x){
                                "ReprPCWk", "Quies")))
   x
 }
+
+# apply to pre-processed data 
 E027 <- process_names(E027)
 E119 <- process_names(E119)
 E119_vs_E028_lost <- process_names(E119_vs_E028_lost)
 E119_vs_E028_gained <- process_names(E119_vs_E028_gained)
 E119_vs_E028_joint <- process_names(E119_vs_E028_joint)
 
-
-# convert odds ratios below 1 to -ve values 
-#process_OR <- function(x){
-#  for(i in 1:nrow(x)){
-#    if(x$OR[i]<1){
-#      x$OR[i] <- -(1/x$OR[i])
-#      x$LB[i] <- -(1/x$LB[i])
-#      x$UB[i] <- -(1/x$UB[i])
-#    }
-#  }
-#  x
-#}
-#E027 <- process_OR(E027)
-#E119 <- process_OR(E119)
-#E119_vs_E028_lost <- process_OR(E119_vs_E028_lost)
-#E119_vs_E028_gained <- process_OR(E119_vs_E028_gained)
-#E119_vs_E028_joint <- process_OR(E119_vs_E028_joint)
-
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 # generate plots
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+# function for plotting 
 f_plot <- function(dat, title, ylim_min, ylim_max, out_dir, file_name){
   ppi=300
   png(paste0(out_dir, file_name), width=4.2*ppi, height=4.4*ppi, res=ppi)

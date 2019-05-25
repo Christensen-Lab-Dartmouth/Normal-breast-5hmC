@@ -134,20 +134,6 @@ res_lost <- lapply(non_overlapping_lost, test_enrichment_MH)
 res_gained <- lapply(non_overlapping_gained, test_enrichment_MH)
 res_joint <- lapply(non_overlapping_joint, test_enrichment_MH)
 
-
-
-
-overlaps <- findOverlaps(non_overlapping_gained[[8]], Illumina_gr)
-indicies <- subjectHits(overlaps)
-temp <- rep(0, length(AnnotSel$top_5hmC))
-temp[indicies] <- 1
-MH_table <- table(factor(AnnotSel$top_5hmC, levels = c("1","0")), 
-                  factor(temp, levels = c("1","0")), 
-                  AnnotSel$CpG_Regions)
-mh <- mantelhaen.test(MH_table, exact=TRUE)
-
-
-
 # generate and output results table of 5hmC enrichment with each genomic feature 
 results_summary <- function(res_list){
   tab <- matrix(NA, ncol = 5, nrow = 15)

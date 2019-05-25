@@ -1,5 +1,6 @@
 #######################################################################################################################
 # Generate forest plots w/ tables of 5hmC enrichment tests against ChIP-seq data from Roadmap Epigenomics project 
+# (for indidvidual histone marks e.g. H3K36me3 and transcriptional features, i.e. promoters, intergenic, introns, exons)
 #######################################################################################################################
 rm(list = ls())
 setwd("/Users/Owen 1/Dropbox (Christensen Lab)/NDRI_Breast_5hmC_update/")

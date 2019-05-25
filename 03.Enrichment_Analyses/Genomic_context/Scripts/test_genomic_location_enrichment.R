@@ -91,10 +91,13 @@ table(annot$promoters)[[2]] + table(annot$exon)[[2]] + table(annot$intron)[[2]] 
 # calculate % of CpGs in regions of interest 
 pro_exo_int_high_hmC <- table(annot$top_5hmC, annot$intron)[4]+table(annot$top_5hmC, annot$promoters)[4]+table(annot$top_5hmC, annot$exon)[4]
 intergenic_high_hmC <- table(annot$top_5hmC, annot$intergenic)[4]
-pro_exo_int_high_hmC/3876*100
 
 # save annotation containing gene part annotation 
 saveRDS(annot, file = "02.Characterization_5hmC_levels/Files/annotation_good_probes_w_gene_parts.rds")
+
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+# Test enrichment at transcriptional context 
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 # test enrichmentr of high 5hmC CpGs among these genomic features against 450K background set 
 transc_features <- c("promoters", "exon", "intron", "intergenic")
@@ -105,16 +108,6 @@ test_enrichment <- function(feature){
 res <- lapply(transc_features, test_enrichment)
 names(res) <- c("promoters", "exon", "intron", "intergenic")
 res
-
-table(annot$top_5hmC, annot[,"exon"])
-fisher.test(table(annot$top_5hmC, annot[,"exon"]))
-
-table(factor(annot$top_5hmC, levels = c("1", "0")), factor(annot[,"exon"], levels = c("1", "0")))
-fisher.test(table(factor(annot$top_5hmC, levels = c("1", "0")), factor(annot[,"exon"], levels = c("1", "0"))))
-
-
-table(annot$top_5hmC, annot[,"intergenic"], annot$CpG_Regions)
-mantelhaen.test(table(annot$top_5hmC, annot[,"intergenic"], annot$CpG_Regions), exact=TRUE)
 
 # generate and output results table of 5hmC enrichment with each genomic feature 
 tab <- matrix(NA, ncol = 5, nrow = 4)
@@ -160,7 +153,6 @@ test_enrichment_2 <- function(feature){
 res <- lapply(cgi_features, test_enrichment_2)
 names(res) <- c("Island", "Shore", "Shelf", "OpenSea")
 res
-
 
 # generate and output results table of 5hmC enrichment with each genomic feature 
 tab <- matrix(NA, ncol = 5, nrow = 4)
