@@ -31,7 +31,8 @@ This repository contains all code used to process and generate our results. An o
     3. Tests of *high 5hmC CpG* enrichment among DNA regulatory regions (e.g. histone modifications)
 
 * **04.Gene_expression**
-    1. CpG-specific correlation analysis between 5hmC abundance & gene expression
+    1. Gene-level enrichment analysis of 5hmc among highly expressed genes in breast tissues (GTEx)
+    2. CpG-specific correlation analysis between 5hmC abundance & gene expression
 
 * **05.Cancer_Comparison**
     1. Tests of *high 5hmC CpG* enrichment among differentially methylated CpGs between DCIS & adjacent-normal
@@ -47,9 +48,12 @@ This repository contains all code used to process and generate our results. An o
     - TCGA project, NCI Genomic Data Commons (https://portal.gdc.cancer.gov/)
 * Breast-specific DNase hypersensitivity site & histone modification coordinates (from ChIP-seq experiments):
     - NIH Roadmap Epigenomics Project (https://www.ncbi.nlm.nih.gov/geo/roadmap/epigenomics/)
+* Gene expression (RNA-seq) in normal breast tissues:
+    - GTEx Project (https://gtexportal.org/home/)
 
 > **Abbreviations**:  <br />
 > NDRI - National Disease Research Interchange <br />
 > NHMN - New Hampshire Mammography Network <br />
 > TCGA - The Cancer Genome Atlas <br />
 > NCI - National Cancer Institute <br />
+> GTEx - Genotype-Tissue Expression project <br />
